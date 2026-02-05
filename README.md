@@ -27,6 +27,7 @@ Q-Sys Plugin for WiiM Audio Players using the HTTP API with local polling.
 
 - Album art is fetched and encoded on the Core, so the Core needs network access to the artwork URL.
 - Playlist art loads sequentially to avoid CPU spikes.
+- The "Stop" button actually just switches the input to optical in. This is becuase I couldnt find a way for the API to set the input to "none". If the API updates at any point I will change this.
 
 ## Requirements
 
