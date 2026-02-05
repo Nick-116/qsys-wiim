@@ -165,8 +165,7 @@ function GetControls(props)
       ControlType = "Indicator",
       IndicatorType = "Text",
       Count = 1,
-      UserPin = true,
-      PinStyle = "Output",
+      UserPin = false,
     })
 
     table.insert(ctrls, {
@@ -174,8 +173,7 @@ function GetControls(props)
       ControlType = "Button",
       ButtonType = "Toggle",
       Count = 1,
-      UserPin = true,
-      PinStyle = "Output",
+      UserPin = false,
     })
 
     table.insert(ctrls, {
@@ -184,8 +182,9 @@ function GetControls(props)
       ButtonType = "Trigger",
       Count = 1,
       UserPin = true,
-      PinStyle = "Both",
+      PinStyle = "Input",
     })
+
   end
 
   return ctrls
@@ -439,7 +438,7 @@ function GetControlLayout(props)
       }
 
       layout["PresetPlay" .. i] = {
-        PrettyName = "Play",
+        PrettyName = "Preset " .. i,
         Position = {playX, rowY},
         Size = {40, 22},
       }
@@ -902,7 +901,6 @@ if Controls then
   getPresetInfo()
   ipWatchTimer:Start(0.5)
 
-  -- Preset play buttons
   for i = 1, 12 do
     local idx = i
     Controls["PresetPlay" .. idx].EventHandler = function()
@@ -968,6 +966,6 @@ if Controls then
   end
 
   Controls.TransportStop.EventHandler = function()
-    sendCommand("setPlayerCmd:next")
+    sendCommand("setPlayerCmd:switchmode:optical")
   end
 end
